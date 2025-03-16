@@ -8,17 +8,11 @@
         <table border="1" cellpadding="2" cellspacing="0">
         <tr>
 
-            <th>ID</th>
-            <th>Username</th>
-            <th>Nama</th>
-            <th>ID Level Pengguna</th>
+            <td>Jumlah Pengguna</td>
         </tr>
         
         <tr>
-            <td>{{ $data->user_id }}</td>
-            <td>{{ $data->username }}</td>
-            <td>{{ $data->nama }}</td>
-            <td>{{ $data->level_id }}</td>
+            <td>{{ $data }}</td>
         </tr>
         
         </table>
