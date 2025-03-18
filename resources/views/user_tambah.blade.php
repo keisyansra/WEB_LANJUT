@@ -2,7 +2,7 @@
 <html>
     <body>
         <h1>Form Tambah Data User</h1>
-        <form method="POST" action="/user/tambah_simpan">
+        <form method="POST" action="./tambah_simpan">
         
         {{ csrf_field() }}
         

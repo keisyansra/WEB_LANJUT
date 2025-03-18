@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index() {
-        $user = UserModel::with('level')->get();
-        dd($user);
+        $user = UserModel::all();
+        return view('user', ['data' => $user]);
     }
 
     public function tambah() {
@@ -19,7 +19,7 @@ class UserController extends Controller
     }
 
     public function tambah_simpan(Request $request) {
-        dd($request->all());
+        //dd($request->all());
         UserModel::create([
             'username' => $request->username,
             'nama' => $request->nama,
