@@ -24,14 +24,20 @@ class UserController extends Controller {
 
         $activeMenu = 'user'; 
         $users = UserModel::with('level')->get();
+
+        $level = LevelModel::all(); //ambil data level untuk filter level
         
-        return view('user.index', compact('breadcrumb', 'page', 'activeMenu', 'users'));
+        return view('user.index', compact('breadcrumb', 'page', 'activeMenu', 'users', 'level'));
     }
 
     // Mengambil data user untuk DataTables
     public function list(Request $request) {
         $users = UserModel::select('user_id', 'username', 'nama', 'level_id')->with('level');
 
+        // filter data user berdasarkan level_id 
+        if (!empty($request->level_id)) {
+            $users->where('level_id', $request->level_id);
+        }
         return DataTables::of($users)
             ->addIndexColumn()
             ->addColumn('aksi', function ($user) {
