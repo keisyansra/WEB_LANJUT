@@ -14,7 +14,7 @@ class LevelModel extends Model
     protected $fillable = ['level_kode', 'level_nama']; 
 
     // relasi one to one ke UserModel
-    public function user() : HashOne{
+    public function level() : HashOne{
         return $this->hasOne(UserModel::class, 'level_id', 'level_id');
     } // relasi one-to-many, level memiliki banyak user
 }
