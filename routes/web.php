@@ -10,8 +10,21 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\AuthController;
 
-// route halaman products
+Route::get('/', function () {
+  return redirect('/login');
+});
+
+Route::pattern('id', '[0-9]+');
+
+
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'postlogin']);
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::middleware(['auth'])->group(function () {
+    // route halaman products
 Route::get('/category/food-beverage', [ProductController::class, 'foodBeverage']);
 Route::get('/category/beauty-health', [ProductController::class, 'beautyHealth']);
 Route::get('/category/home-care', [ProductController::class, 'homeCare']);
@@ -94,6 +107,7 @@ Route::group(['prefix' => 'barang'], function () {
   Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']); // Konfirmasi hapus barang AJAX
   Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); // Hapus barang AJAX
   Route::delete('/{id}', [BarangController::class, 'destroy']); // Hapus barang
+});
 });
 
 //Route::get('/', function () {
