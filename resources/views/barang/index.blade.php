@@ -4,7 +4,9 @@
     <div class="card-header">
         <h3 class="card-title">{{ $page->title }}</h3>
         <div class="card-tools">
+            <button onclick="modalAction('{{ url('/barang/import')}}')" class="btn btn-info">Import Barang</button>
             <a class="btn btn-sm btn-primary mt-1" href="{{ url('barang/create') }}">Tambah</a>
+            <a href="{{url('/barang/export_excel')}}" class="btn tbn-primary"><i class="fa fa-file-excel"></i>Export Barang</a>
             <button class="btn btn-sm btn-success mt-1" data-url="{{ url('/barang/create_ajax') }}" onclick="modalAction(this)">Tambah Ajax</button>
         </div>
     </div>
@@ -117,6 +119,11 @@
                 }
             ]
         });
+        // $('#data-barang_filter input').unbind().bind().on('keyup', function(e)){
+            // if(e.keyCode == 13) {
+                // dataBarang.search(this.value).draw();
+            // }
+        // }
         $('#kategori_id').on('change', function() {
             dataBarang.ajax.reload();
         });
