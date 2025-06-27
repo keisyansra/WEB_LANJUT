@@ -136,3 +136,4 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 //Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
 //Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 //Route::get('/', [WelcomeController::class, 'index']);
+//});
